@@ -6,7 +6,7 @@ def call(String imageName) {
     sh "docker tag $imageName $username/$imageName':$BUILD_NUMBER'"
     sh "echo $password | docker login -u $username --password-stdin "
     sh "docker push $username/$imageName':$BUILD_NUMBER' "
-    sh "for i in `docker images -a -q`; do docker rmi -f $i done"
+    sh " docker rmi $username/$imageName':$BUILD_NUMBER' $imageName openjdk:8"
     }
 }
 
