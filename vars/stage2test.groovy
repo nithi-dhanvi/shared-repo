@@ -1,5 +1,5 @@
 def call(String imageName) {
-    withCredtials ([usernamePassword(credentialsId: "dockerhub-cred", usernameVariable: "username", passwordVariable: "password")])
+    withCredtials ([usernamePassword(credentialsId: "dockerhub-cred", usernameVariable: "Username", passwordVariable: "Password")])
     sh "docker build -t $imageName ."
     sh "docker tag $imageName $imageName':$BUILD_NUMBER'"
     sh "docker push $imageName':$BUILD_NUMBER' "
